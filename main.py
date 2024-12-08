@@ -4,9 +4,10 @@ import random
 from PyQt6 import uic
 from PyQt6.QtGui import QPainter, QColor
 from PyQt6.QtWidgets import QApplication, QMainWindow
+from ui import Ui_MainWindow
 
 
-class Example(QMainWindow):
+class Example(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI.ui', self)
@@ -26,8 +27,8 @@ class Example(QMainWindow):
         self.update()
 
     def draw_circle(self, qp):
-        qp.setPen(QColor(255, 255, 0))
         for i in range(20):
+            qp.setPen(QColor(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
             r = random.randint(0, 200)
             x = random.randint(0, 500)
             y = random.randint(0, 300)
